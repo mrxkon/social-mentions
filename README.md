@@ -27,7 +27,7 @@ It comes with predefined CSS classes for the output list but nothing is styled s
 
 The setup is really easy. Simply follow the instructions in the Settings area of the plugin to create your API Keys for each supported social media and input the #hashtags that you want to fetch to your page and use the shortcode `[social-mentions show="#something"]` on the page you want to view the list.
 
-This plugin is based on the idea of the [Tagregator](https://wordpress.org/plugins/tagregator) plugin, so props to all the people who have been contributing to it all this time.
+This plugin is based on the idea of the [Tagregator](https://wordpress.org/plugins/tagregator) plugin, greetings & props to all the people who have been contributing to it all this time.
 
 #### Installation
 

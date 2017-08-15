@@ -6,9 +6,9 @@
 function social_mentions_create_taxonomy() {
 
 	$labels = array(
-		'name' => _x( 'Hashtags', 'Taxonomy General Name', 'social-mentions' ),
-		'singular_name' => _x( 'Hashtag', 'Taxonomy Singular Name', 'social-mentions' ),
-		'menu_name' => __( 'Hashtags', 'social-mentions' ),
+		'name' => 'Hashtags',
+		'singular_name' => 'Hashtag',
+		'menu_name' => 'Hashtags',
 	);
 	$args = array(
 		'labels' => $labels,
