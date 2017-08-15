@@ -3,6 +3,7 @@
 	position: relative;
 	float: left;
 	font-size: 14px;
+	width: 100%;
 }
 
 #socment-hashtag-header {
@@ -34,6 +35,7 @@
 	position: relative;
 	float: left;
 	margin: 0 0 20px 0;
+	width: 100%;
 }
 
 #socment-hashtag-content-text {
@@ -41,17 +43,25 @@
 	position: relative;
 	float: left;
 	margin: 0 0 10px 0;
+	width: 100%;
 }
 
 #socment-hashtag-img {
 	clear: both;
 	position: relative;
 	float: left;
+	width: 100%;
 }
 
 #socment-hashtag-img img {
 	max-width: 100%;
 	height: auto;
+}
+
+#socment-hashtag-footer {
+	position: relative;
+	clear: both;
+	width: 100%;
 }
 
 #socment-hashtag-readmore {
@@ -61,10 +71,5 @@
 
 #socment-hashtag-date {
 	float: left;
-	position: relative;
-}
-
-#socment-hashtag-social {
-	float: right;
 	position: relative;
 }
