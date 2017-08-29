@@ -58,7 +58,7 @@ function social_mentions_shortcode( $the_hashtags ) {
 			$output .= '<div id="socment-hashtag-holder" class="' . $hashtag_css_classes . '">';
 			$output .= '<div id="socment-hashtag-header">';
 			$output .= '<div id="socment-hashtag-userimg">';
-			$output .= '<img alt="' . $hashtag_meta_username . '" src="' . $hashtag_meta_profile_img . '"/>';
+			$output .= '<img alt="" src="' . $hashtag_meta_profile_img . '"/>';
 			$output .= '</div>';
 			$output .= '<div id="socment-hashtag-username">';
 			$output .= '<a href="' . $hashtag_meta_profile_url . '" title="' . $hashtag_meta_username . '">';

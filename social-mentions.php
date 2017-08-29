@@ -6,7 +6,7 @@
  * Plugin Name:       Social Mentions
  * Plugin URI:        https://xkon.gr/social-mentions/
  * Description:       Gathers posts with certain #hashtags from various social media sources.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Xenos (xkon) Konstantinos
  * Author URI:        https://xkon.gr/
  * License:           GPL-2.0+
@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 // Settings
 //////////////////////////////////////////////////////
 
-define( 'SOCIAL_MENTIONS_VER' , '1.0.0');
+define( 'SOCIAL_MENTIONS_VER' , '1.0.1');
 
 define( 'SOCIAL_MENTIONS_TWITTER_DEV_PORTAL', 'https://apps.twitter.com/' );
 define( 'SOCIAL_MENTIONS_TWITTER_API', 'https://api.twitter.com/' );

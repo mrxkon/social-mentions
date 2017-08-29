@@ -58,7 +58,11 @@ function social_mentions_get_twitter_posts( $the_term ) {
 					$socment_post_username = sanitize_text_field( $twitter_post['user']['screen_name'] );
 					$socment_post_profile_url = 'https://www.twitter.com/' . $socment_post_username;
 					$socment_post_profile_img = esc_url( $twitter_post['user']['profile_image_url_https'] );
-					$socment_post_content_img = '';
+					if ( ! empty( $twitter_post['entities']['media'][0]['media_url_https'] ) ) {
+						$socment_post_content_img = esc_url( $twitter_post['entities']['media'][0]['media_url_https'] );
+					} else {
+						$socment_post_content_img = '';
+					}
 					$socment_post_url = 'https://www.twitter.com/' . $socment_post_username . '/status/' . $socment_post_id;
 
 					// Create post object
