@@ -1,7 +1,7 @@
 <?php
 /*
  * @package Social Mentions
- * @version 1.0.0
+ * @version 1.0.1
  *
  * Plugin Name:       Social Mentions
  * Plugin URI:        https://xkon.gr/social-mentions/
