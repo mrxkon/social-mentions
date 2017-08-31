@@ -51,8 +51,6 @@ FontAwesome - Copyright [Dave Gandy](http://fontawesome.io) -  SIL OFL 1.1 / MIT
 
 == Upgrade Notice ==
 
-This is the first public release.
-
 == Changelog ==
 
 = 1.0.2 =
