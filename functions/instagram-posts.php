@@ -4,18 +4,18 @@
 //////////////////////////////////////////////////////
 
 function social_mentions_get_instagram_posts( $the_term ) {
-	$tr_options = get_option( 'social_mentions_options' );
-	if ( 'yes' == $tr_options['social_mentions_instagram_enabled'] ) {
-		if ( empty( $tr_options['social_mentions_instagram_access_token'] ) ) {
+	$sm_options = get_option( 'social_mentions_options' );
+	if ( 'yes' == $sm_options['social_mentions_instagram_enabled'] ) {
+		if ( empty( $sm_options['social_mentions_instagram_access_token'] ) ) {
 			return;
 		}
 
-		if ( 'no' == $tr_options['social_mentions_instagram_sandbox'] ) {
+		if ( 'no' == $sm_options['social_mentions_instagram_sandbox'] ) {
 			// url for PUBLIC tags // https://api.instagram.com/v1/tags/XXXX/media/recent/?access_token=XXXX
-			$url = SOCIAL_MENTIONS_INSTAGRAM_API . 'v1/tags/' . $the_term . '/media/recent?access_token=' . $tr_options['social_mentions_instagram_access_token'];
+			$url = SOCIAL_MENTIONS_INSTAGRAM_API . 'v1/tags/' . $the_term . '/media/recent?access_token=' . $sm_options['social_mentions_instagram_access_token'];
 		} else {
 			// url for SELF posts https://api.instagram.com/v1/users/self/media/recent/?access_token=XXXX
-			$url = SOCIAL_MENTIONS_INSTAGRAM_API . 'v1/users/self/media/recent?access_token=' . $tr_options['social_mentions_instagram_access_token'];
+			$url = SOCIAL_MENTIONS_INSTAGRAM_API . 'v1/users/self/media/recent?access_token=' . $sm_options['social_mentions_instagram_access_token'];
 		}
 
 		$response = wp_remote_get( $url );

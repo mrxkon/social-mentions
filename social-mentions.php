@@ -1,12 +1,12 @@
 <?php
 /*
  * @package Social Mentions
- * @version 1.0.1
+ * @version 1.0.2
  *
  * Plugin Name:       Social Mentions
  * Plugin URI:        https://xkon.gr/social-mentions/
  * Description:       Gathers posts with certain #hashtags from various social media sources.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Xenos (xkon) Konstantinos
  * Author URI:        https://xkon.gr/
  * License:           GPL-2.0+
@@ -27,7 +27,10 @@ if ( ! defined( 'WPINC' ) ) {
 // Settings
 //////////////////////////////////////////////////////
 
-define( 'SOCIAL_MENTIONS_VER' , '1.0.1');
+define( 'SOCIAL_MENTIONS_VER' , '1.0.2');
+define( 'MASONRY_VER', '4.2.0' );
+define( 'IMAGES_LOADED_VER', '4.1.3' );
+define( 'FONTAWESOME_VER', '4.0.7' );
 
 define( 'SOCIAL_MENTIONS_TWITTER_DEV_PORTAL', 'https://apps.twitter.com/' );
 define( 'SOCIAL_MENTIONS_TWITTER_API', 'https://api.twitter.com/' );
@@ -78,6 +81,19 @@ function social_mentions_load_scripts()
 	wp_enqueue_style( 'social-mentions', plugin_dir_url( __FILE__ ) . 'css/front-end.css', array(), SOCIAL_MENTIONS_VER );
 }
 add_action( 'wp_enqueue_scripts', 'social_mentions_load_scripts' );
+
+// Load Masonry
+function social_mentions_load_masonry() {
+	wp_register_script( 'social-mentions-masonry', plugin_dir_url( __FILE__ ) . 'js/masonry.pkgd.min.js', array( 'jquery' ), MASONRY_VER );
+	wp_register_script( 'social-mentions-imagesloaded', plugin_dir_url( __FILE__ ) . 'js/imagesLoaded.pkgd.min.js', array( 'jquery' ), IMAGES_LOADED_VER );
+}
+add_action( 'wp_enqueue_scripts', 'social_mentions_load_masonry' );
+
+// Load FontAwesome
+function social_mentions_load_fontawesome() {
+	wp_register_style( 'social-mentions-fontawesome', plugin_dir_url( __FILE__ ) . 'css/fontawesome/css/font-awesome.min.css', array(), FONTAWESOME_VER );
+}
+add_action( 'wp_enqueue_scripts', 'social_mentions_load_fontawesome' );
 
 //////////////////////////////////////////////////////
 // Load core files

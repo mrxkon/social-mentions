@@ -4,13 +4,13 @@
 //////////////////////////////////////////////////////
 
 function social_mentions_get_googleplus_posts( $the_term ) {
-	$tr_options = get_option( 'social_mentions_options' );
-	if ( 'yes' == $tr_options['social_mentions_googleplus_enabled'] ) {
-		if ( empty( $tr_options['social_mentions_googleplus_key'] ) ) {
+	$sm_options = get_option( 'social_mentions_options' );
+	if ( 'yes' == $sm_options['social_mentions_googleplus_enabled'] ) {
+		if ( empty( $sm_options['social_mentions_googleplus_key'] ) ) {
 			return;
 		}
 
-		$url = SOCIAL_MENTIONS_GOOGLEPLUS_API . 'v1/activities?maxResults=20&query=%23' . $the_term . '&key=' . $tr_options['social_mentions_googleplus_key'];
+		$url = SOCIAL_MENTIONS_GOOGLEPLUS_API . 'v1/activities?maxResults=20&query=%23' . $the_term . '&key=' . $sm_options['social_mentions_googleplus_key'];
 
 		$response = wp_remote_get( $url );
 		$the_result = wp_remote_retrieve_body( $response );

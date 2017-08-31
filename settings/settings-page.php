@@ -112,11 +112,11 @@ function social_mentions_settings_page() {
 	</div>
 	<?php
 
-	$tr_options = get_option( 'social_mentions_options', array() );
+	$sm_options = get_option( 'social_mentions_options', array() );
 	// create terms if they don't exist
-	if ( ! empty( $tr_options['social_mentions_hashtag_key'] ) ) {
+	if ( ! empty( $sm_options['social_mentions_hashtag_key'] ) ) {
 		// create array from hashtags
-		$hashtags = explode( ',', $tr_options['social_mentions_hashtag_key'] );
+		$hashtags = explode( ',', $sm_options['social_mentions_hashtag_key'] );
 
 		// create terms if they don't exist
 		foreach ( $hashtags as $hashtag ) {
@@ -140,11 +140,11 @@ function social_mentions_settings_page() {
 	$access_token = '';
 	$insta_client_id = '';
 
-	if ( ! empty( $tr_options ) ) {
-		$insta_client_id = $tr_options['social_mentions_instagram_client_id'];
-		$insta_client_secret = $tr_options['social_mentions_instagram_client_secret'];
-		$insta_redirect_url = $tr_options['social_mentions_instagram_redirect_url'];
-		$insta_access_token = $tr_options['social_mentions_instagram_access_token'];
+	if ( ! empty( $sm_options ) ) {
+		$insta_client_id = $sm_options['social_mentions_instagram_client_id'];
+		$insta_client_secret = $sm_options['social_mentions_instagram_client_secret'];
+		$insta_redirect_url = $sm_options['social_mentions_instagram_redirect_url'];
+		$insta_access_token = $sm_options['social_mentions_instagram_access_token'];
 	}
 
 	if ( ! empty( $_GET['code'] ) ) {

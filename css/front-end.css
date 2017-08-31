@@ -1,9 +1,10 @@
 #socment-hashtag-holder {
-	margin: 0 0 20px 0;
-	position: relative;
-	float: left;
-	font-size: 14px;
-	width: 100%;
+	padding: 10px;
+	background: #fff;
+	border: 1px solid #b6b6b6;
+	word-wrap: break-word;
+	margin: 10px;
+	width: calc( 33% - 20px );
 }
 
 #socment-hashtag-header {
@@ -12,6 +13,7 @@
 	width: 100%;
 	clear: both;
 	margin: 0 0 20px 0;
+	font-weight: 600;
 }
 
 #socment-hashtag-userimg {
@@ -55,6 +57,7 @@
 
 #socment-hashtag-img img {
 	max-width: 100%;
+	margin:0 auto;
 	height: auto;
 }
 
@@ -62,6 +65,7 @@
 	position: relative;
 	clear: both;
 	width: 100%;
+	font-weight: 600;
 }
 
 #socment-hashtag-readmore {
@@ -72,4 +76,16 @@
 #socment-hashtag-date {
 	float: left;
 	position: relative;
+}
+
+@media (max-width: 992px) {
+	#socment-hashtag-holder {
+		width: calc( 50% - 20px );
+	}
+}
+
+@media (max-width: 768px) {
+	#socment-hashtag-holder {
+		width: calc( 100% - 20px );
+	}
 }

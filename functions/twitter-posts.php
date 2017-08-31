@@ -4,14 +4,14 @@
 //////////////////////////////////////////////////////
 
 function social_mentions_get_twitter_posts( $the_term ) {
-	$tr_options = get_option( 'social_mentions_options' );
-	if ( 'yes' == $tr_options['social_mentions_twitter_enabled'] ) {
-		if ( empty( $tr_options['social_mentions_twitter_key'] ) || empty( $tr_options['social_mentions_twitter_secret'] ) ) {
+	$sm_options = get_option( 'social_mentions_options' );
+	if ( 'yes' == $sm_options['social_mentions_twitter_enabled'] ) {
+		if ( empty( $sm_options['social_mentions_twitter_key'] ) || empty( $sm_options['social_mentions_twitter_secret'] ) ) {
 			return;
 		}
 
-		$twitter_key = $tr_options['social_mentions_twitter_key'];
-		$twitter_secret = $tr_options['social_mentions_twitter_secret'];
+		$twitter_key = $sm_options['social_mentions_twitter_key'];
+		$twitter_secret = $sm_options['social_mentions_twitter_secret'];
 
 		$latest_tweet = new WP_Query(
 			array(

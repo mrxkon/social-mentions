@@ -4,9 +4,9 @@
 //////////////////////////////////////////////////////
 
 function social_mentions_get_flickr_posts( $the_term ) {
-	$tr_options = get_option( 'social_mentions_options' );
-	if ( 'yes' == $tr_options['social_mentions_flickr_enabled'] ) {
-		if ( empty( $tr_options['social_mentions_flickr_key'] ) ) {
+	$sm_options = get_option( 'social_mentions_options' );
+	if ( 'yes' == $sm_options['social_mentions_flickr_enabled'] ) {
+		if ( empty( $sm_options['social_mentions_flickr_key'] ) ) {
 			return;
 		}
 
@@ -27,7 +27,7 @@ function social_mentions_get_flickr_posts( $the_term ) {
 			$min_date = date( 'Y-m-d 0:00:00', strtotime( $today . '-30 days' ) );
 		}
 
-		$url = SOCIAL_MENTIONS_FLICKR_API . '?method=flickr.photos.search&tags=' . $the_term . '&per_page=20&min_upload_date=' . $min_date . '&extras=date_upload,description,owner_name,url_n,url_l,icon_farm,icon_server&format=json&nojsoncallback=1&api_key=' . $tr_options['social_mentions_flickr_key'];
+		$url = SOCIAL_MENTIONS_FLICKR_API . '?method=flickr.photos.search&tags=' . $the_term . '&per_page=20&min_upload_date=' . $min_date . '&extras=date_upload,description,owner_name,url_n,url_l,icon_farm,icon_server&format=json&nojsoncallback=1&api_key=' . $sm_options['social_mentions_flickr_key'];
 
 		$response = wp_remote_get( $url );
 		$the_result = wp_remote_retrieve_body( $response );
@@ -52,7 +52,7 @@ function social_mentions_get_flickr_posts( $the_term ) {
 				$socment_post_user = sanitize_text_field( $flickr_post['ownername'] );
 				$socment_post_username = sanitize_text_field( $flickr_post['ownername'] );
 				$socment_post_profile_url = 'https://www.flickr.com/photos/' . $flickr_owner . '/';
-				$socment_post_profile_img = 'http://farm' . $flickr_iconfarm . '.staticflickr.com/' . $flickr_iconserver . '/buddyicons/' . $flickr_owner . '.jpg';
+				$socment_post_profile_img = 'https://farm' . $flickr_iconfarm . '.staticflickr.com/' . $flickr_iconserver . '/buddyicons/' . $flickr_owner . '.jpg';
 
 				if ( null != $flickr_bigimg || null != $flickr_smallimg ) {
 					$socment_post_content_img = $flickr_bigimg;

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/xkon
 Tags: hashtag, social media, twitter, instagram, flickr, google+, google plus
 Requires at least: 4.7
 Tested up to: 4.8.1
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,16 @@ It comes with predefined CSS classes for the output list but nothing is styled s
 The setup is really easy. Simply follow the instructions in the Settings area of the plugin to create your API Keys for each supported social media and input the #hashtags that you want to fetch to your page and use the shortcode `[social-mentions show="#something"]` on the page you want to view the list.
 
 This plugin is based on the idea of the [Tagregator](https://wordpress.org/plugins/tagregator) plugin, greetings & props to all the people who have been contributing to it all this time.
+
+Greetings, Copyrights & Licences
+
+This plugin is based on the idea of the [Tagregator](https://wordpress.org/plugins/tagregator) plugin, greetings & props to all the people who have been contributing to it all this time.
+
+Masonry - Copyright [David DeSandro](https://masonry.desandro.com/) -  MIT License.
+
+imagesLoaded - Copyright [David DeSandro](https://imagesloaded.desandro.com/) -  MIT License.
+
+FontAwesome - Copyright [Dave Gandy](http://fontawesome.io) -  SIL OFL 1.1 / MIT License.
 
 == Installation ==
 
@@ -44,6 +54,12 @@ This plugin is based on the idea of the [Tagregator](https://wordpress.org/plugi
 This is the first public release.
 
 == Changelog ==
+
+= 1.0.2 =
+
+* Added Masonry Layout ( Optional )
+* Added FontAwesome ( Optional )
+* Added some basic CSS
 
 = 1.0.1 =
 

@@ -4,6 +4,20 @@
 //////////////////////////////////////////////////////
 
 function social_mentions_shortcode( $the_hashtags ) {
+	$sm_options = get_option( 'social_mentions_options' );
+	$load_masonry = $sm_options['social_mentions_masonry_enabled'];
+	$load_fontawesome = $sm_options['social_mentions_fontawesome_enabled'];
+
+	// Load Masonry
+	if ( ! empty( $load_masonry ) && 'yes' == $load_masonry ) {
+		wp_enqueue_script( 'social-mentions-masonry' );
+		wp_enqueue_script( 'social-mentions-imagesloaded' );
+	}
+
+	// Load FontAwesome
+	if ( ! empty( $load_fontawesome ) && 'yes' == $load_fontawesome ) {
+		wp_enqueue_style( 'social-mentions-fontawesome' );
+	}
 
 	// create array from hashtags
 	$hashtags = explode( ',', $the_hashtags['show'] );
@@ -36,11 +50,11 @@ function social_mentions_shortcode( $the_hashtags ) {
 		)
 	);
 
-	$tr_options = get_option( 'social_mentions_options' );
-	$hashtag_css_classes = $tr_options['social_mentions_hashtag_css'];
+	$hashtag_css_classes = $sm_options['social_mentions_hashtag_css'];
 
 	if ( $the_posts->have_posts() ) {
 		$output = '';
+		$output .= '<div id="socment-hashtag-grid">';
 		while ( $the_posts->have_posts() ) {
 			$the_posts->the_post();
 
@@ -80,19 +94,19 @@ function social_mentions_shortcode( $the_hashtags ) {
 			$output .= '<div id="socment-hashtag-readmore">';
 			if ( 'socment-twitter' == $hashtag_post_type ) {
 				$output .= '<a href="' . $hashtag_meta_url . '">';
-				$output .= 'View on Twitter';
+				$output .= '<i class="fa fa-twitter"></i>';
 				$output .= '</a>';
 			} elseif ( 'socment-instagram' == $hashtag_post_type ) {
 				$output .= '<a href="' . $hashtag_meta_url . '">';
-				$output .= 'View on Instagram';
+				$output .= '<i class="fa fa-instagram"></i>';
 				$output .= '</a>';
 			} elseif ( 'socment-googleplus' == $hashtag_post_type ) {
 				$output .= '<a href="' . $hashtag_meta_url . '">';
-				$output .= 'View on Google+';
+				$output .= '<i class="fa fa-google-plus"></i>';
 				$output .= '</a>';
 			} elseif ( 'socment-flickr' == $hashtag_post_type ) {
 				$output .= '<a href="' . $hashtag_meta_url . '">';
-				$output .= 'View on Flickr';
+				$output .= '<i class="fa fa-flickr"></i>';
 				$output .= '</a>';
 			}
 			$output .= '</div>';
@@ -101,6 +115,23 @@ function social_mentions_shortcode( $the_hashtags ) {
 			$output .= '</div>';
 			$output .= '</div>';
 			$output .= '</div>';
+		}
+		$output .= '</div>';
+		if ( ! empty( $load_masonry ) && 'yes' == $load_masonry ) {
+			$output .= '
+			<script>
+			(function($){
+				$(document).ready(function(){
+					var $socialGrid = $(\'#socment-hashtag-grid\').masonry({
+						itemSelector: \'#socment-hashtag-holder\'
+					});
+	
+					$socialGrid.imagesLoaded().progress( function() {
+						$socialGrid.masonry(\'layout\');
+					});
+				})
+			})(jQuery)
+			</script>';
 		}
 
 		return $output;

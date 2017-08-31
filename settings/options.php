@@ -31,6 +31,20 @@ function social_mentions_options() {
 		'social_mentions_hashtag',
 		'social_mentions_hashtag'
 	);
+	add_settings_field(
+		'social_mentions_masonry_enabled',
+		'Enable Masonry',
+		'social_mentions_masonry_enabled',
+		'social_mentions_hashtag',
+		'social_mentions_hashtag'
+	);
+	add_settings_field(
+		'social_mentions_fontawesome_enabled',
+		'Enable FontAwesome',
+		'social_mentions_fontawesome_enabled',
+		'social_mentions_hashtag',
+		'social_mentions_hashtag'
+	);
 
 	// twitter settings
 	add_settings_section(
@@ -170,31 +184,67 @@ function social_mentions_options_validate( $options ) {
 }// end social_mentions_options_validate
 
 function social_mentions_hashtag_key() {
-	$tr_options = get_option( 'social_mentions_options' );
-	echo "<input id='social_mentions_hashtag_key' name='social_mentions_options[social_mentions_hashtag_key]' size='40' type='text' value='{$tr_options['social_mentions_hashtag_key']}' />";
+	$sm_options = get_option( 'social_mentions_options' );
+	echo "<input id='social_mentions_hashtag_key' name='social_mentions_options[social_mentions_hashtag_key]' size='40' type='text' value='{$sm_options['social_mentions_hashtag_key']}' />";
 }// end social_mentions_hashtag_key
 
 function social_mentions_hashtag_css() {
-	$tr_options = get_option( 'social_mentions_options' );
-	echo "<input id='social_mentions_hashtag_css' name='social_mentions_options[social_mentions_hashtag_css]' size='40' type='text' value='{$tr_options['social_mentions_hashtag_css']}' />";
+	$sm_options = get_option( 'social_mentions_options' );
+	echo "<input id='social_mentions_hashtag_css' name='social_mentions_options[social_mentions_hashtag_css]' size='40' type='text' value='{$sm_options['social_mentions_hashtag_css']}' />";
 }// end social_mentions_hashtag_key
 
+function social_mentions_masonry_enabled() {
+	$sm_options = get_option( 'social_mentions_options' );
+	if ( empty( $sm_options['social_mentions_masonry_enabled'] ) ) {
+		$no_selected = 'selected="selected"';
+		$yes_selected = '';
+	} elseif ( 'no' == $sm_options['social_mentions_masonry_enabled'] ) {
+		$no_selected = 'selected="selected"';
+		$yes_selected = '';
+	} else {
+		$yes_selected = 'selected="selected"';
+		$no_selected = '';
+	}
+	echo '<select id="social_mentions_masonry_enabled" name="social_mentions_options[social_mentions_masonry_enabled]">';
+	echo '<option value="no" ' . $no_selected . '>No</option>';
+	echo '<option value="yes" ' . $yes_selected . '>Yes</option>';
+	echo '</select>';
+}// end social_mentions_masonry_enabled
+
+function social_mentions_fontawesome_enabled() {
+	$sm_options = get_option( 'social_mentions_options' );
+	if ( empty( $sm_options['social_mentions_fontawesome_enabled'] ) ) {
+		$no_selected = 'selected="selected"';
+		$yes_selected = '';
+	} elseif ( 'no' == $sm_options['social_mentions_fontawesome_enabled'] ) {
+		$no_selected = 'selected="selected"';
+		$yes_selected = '';
+	} else {
+		$yes_selected = 'selected="selected"';
+		$no_selected = '';
+	}
+	echo '<select id="social_mentions_masonry_enabled" name="social_mentions_options[social_mentions_fontawesome_enabled]">';
+	echo '<option value="no" ' . $no_selected . '>No</option>';
+	echo '<option value="yes" ' . $yes_selected . '>Yes</option>';
+	echo '</select>';
+}// end social_mentions_fontawesome_enabled
+
 function social_mentions_twitter_key() {
-	$tr_options = get_option( 'social_mentions_options' );
-	echo "<input id='social_mentions_twitter_key' name='social_mentions_options[social_mentions_twitter_key]' size='40' type='text' value='{$tr_options['social_mentions_twitter_key']}' />";
+	$sm_options = get_option( 'social_mentions_options' );
+	echo "<input id='social_mentions_twitter_key' name='social_mentions_options[social_mentions_twitter_key]' size='40' type='text' value='{$sm_options['social_mentions_twitter_key']}' />";
 }// end social_mentions_twitter_key
 
 function social_mentions_twitter_secret() {
-	$tr_options = get_option( 'social_mentions_options' );
-	echo "<input id='social_mentions_twitter_secret' name='social_mentions_options[social_mentions_twitter_secret]' size='40' type='text' value='{$tr_options['social_mentions_twitter_secret']}' />";
+	$sm_options = get_option( 'social_mentions_options' );
+	echo "<input id='social_mentions_twitter_secret' name='social_mentions_options[social_mentions_twitter_secret]' size='40' type='text' value='{$sm_options['social_mentions_twitter_secret']}' />";
 }// end social_mentions_twitter_secret
 
 function social_mentions_twitter_enabled() {
-	$tr_options = get_option( 'social_mentions_options' );
-	if ( empty( $tr_options['social_mentions_twitter_enabled'] ) ) {
+	$sm_options = get_option( 'social_mentions_options' );
+	if ( empty( $sm_options['social_mentions_twitter_enabled'] ) ) {
 		$no_selected = 'selected="selected"';
 		$yes_selected = '';
-	} elseif ( 'no' == $tr_options['social_mentions_twitter_enabled'] ) {
+	} elseif ( 'no' == $sm_options['social_mentions_twitter_enabled'] ) {
 		$no_selected = 'selected="selected"';
 		$yes_selected = '';
 	} else {
@@ -208,31 +258,31 @@ function social_mentions_twitter_enabled() {
 }// end social_mentions_twitter_enabled
 
 function social_mentions_instagram_client_id() {
-	$tr_options = get_option( 'social_mentions_options' );
-	echo "<input id='social_mentions_instagram_client_id' name='social_mentions_options[social_mentions_instagram_client_id]' size='40' type='text' value='{$tr_options['social_mentions_instagram_client_id']}' />";
+	$sm_options = get_option( 'social_mentions_options' );
+	echo "<input id='social_mentions_instagram_client_id' name='social_mentions_options[social_mentions_instagram_client_id]' size='40' type='text' value='{$sm_options['social_mentions_instagram_client_id']}' />";
 }// end social_mentions_instagram_client_id
 
 function social_mentions_instagram_client_secret() {
-	$tr_options = get_option( 'social_mentions_options' );
-	echo "<input id='social_mentions_instagram_client_secret' name='social_mentions_options[social_mentions_instagram_client_secret]' size='40' type='text' value='{$tr_options['social_mentions_instagram_client_secret']}' />";
+	$sm_options = get_option( 'social_mentions_options' );
+	echo "<input id='social_mentions_instagram_client_secret' name='social_mentions_options[social_mentions_instagram_client_secret]' size='40' type='text' value='{$sm_options['social_mentions_instagram_client_secret']}' />";
 }// end social_mentions_instagram_client_secret
 
 function social_mentions_instagram_redirect_url() {
-	$tr_options = get_option( 'social_mentions_options' );
-	echo "<input id='social_mentions_instagram_redirect_url' name='social_mentions_options[social_mentions_instagram_redirect_url]' size='40' type='text' value='{$tr_options['social_mentions_instagram_redirect_url']}' />";
+	$sm_options = get_option( 'social_mentions_options' );
+	echo "<input id='social_mentions_instagram_redirect_url' name='social_mentions_options[social_mentions_instagram_redirect_url]' size='40' type='text' value='{$sm_options['social_mentions_instagram_redirect_url']}' />";
 }// end social_mentions_instagram_redirect_url
 
 function social_mentions_instagram_access_token() {
-	$tr_options = get_option( 'social_mentions_options' );
-	echo "<input id='social_mentions_instagram_access_token' name='social_mentions_options[social_mentions_instagram_access_token]' size='40' type='text' value='{$tr_options['social_mentions_instagram_access_token']}' />";
+	$sm_options = get_option( 'social_mentions_options' );
+	echo "<input id='social_mentions_instagram_access_token' name='social_mentions_options[social_mentions_instagram_access_token]' size='40' type='text' value='{$sm_options['social_mentions_instagram_access_token']}' />";
 }// end social_mentions_instagram_access_token
 
 function social_mentions_instagram_sandbox() {
-	$tr_options = get_option( 'social_mentions_options' );
-	if ( empty( $tr_options['social_mentions_instagram_sandbox'] ) ) {
+	$sm_options = get_option( 'social_mentions_options' );
+	if ( empty( $sm_options['social_mentions_instagram_sandbox'] ) ) {
 		$yes_selected = 'selected="selected"';
 		$no_selected = '';
-	} elseif ( 'yes' == $tr_options['social_mentions_instagram_sandbox'] ) {
+	} elseif ( 'yes' == $sm_options['social_mentions_instagram_sandbox'] ) {
 		$yes_selected = 'selected="selected"';
 		$no_selected = '';
 	} else {
@@ -246,11 +296,11 @@ function social_mentions_instagram_sandbox() {
 }// end social_mentions_instagram_sandbox
 
 function social_mentions_instagram_enabled() {
-	$tr_options = get_option( 'social_mentions_options' );
-	if ( empty( $tr_options['social_mentions_instagram_enabled'] ) ) {
+	$sm_options = get_option( 'social_mentions_options' );
+	if ( empty( $sm_options['social_mentions_instagram_enabled'] ) ) {
 		$no_selected = 'selected="selected"';
 		$yes_selected = '';
-	} elseif ( 'no' == $tr_options['social_mentions_instagram_enabled'] ) {
+	} elseif ( 'no' == $sm_options['social_mentions_instagram_enabled'] ) {
 		$no_selected = 'selected="selected"';
 		$yes_selected = '';
 	} else {
@@ -264,16 +314,16 @@ function social_mentions_instagram_enabled() {
 }// end social_mentions_instagram_enabled
 
 function social_mentions_flickr_key() {
-	$tr_options = get_option( 'social_mentions_options' );
-	echo "<input id='social_mentions_flickr_key' name='social_mentions_options[social_mentions_flickr_key]' size='40' type='text' value='{$tr_options['social_mentions_flickr_key']}' />";
+	$sm_options = get_option( 'social_mentions_options' );
+	echo "<input id='social_mentions_flickr_key' name='social_mentions_options[social_mentions_flickr_key]' size='40' type='text' value='{$sm_options['social_mentions_flickr_key']}' />";
 }// end social_mentions_flickr_key
 
 function social_mentions_flickr_enabled() {
-	$tr_options = get_option( 'social_mentions_options' );
-	if ( empty( $tr_options['social_mentions_flickr_enabled'] ) ) {
+	$sm_options = get_option( 'social_mentions_options' );
+	if ( empty( $sm_options['social_mentions_flickr_enabled'] ) ) {
 		$no_selected = 'selected="selected"';
 		$yes_selected = '';
-	} elseif ( 'no' == $tr_options['social_mentions_flickr_enabled'] ) {
+	} elseif ( 'no' == $sm_options['social_mentions_flickr_enabled'] ) {
 		$no_selected = 'selected="selected"';
 		$yes_selected = '';
 	} else {
@@ -287,16 +337,16 @@ function social_mentions_flickr_enabled() {
 }// end social_mentions_flickr_enabled
 
 function social_mentions_googleplus_key() {
-	$tr_options = get_option( 'social_mentions_options' );
-	echo "<input id='social_mentions_googleplus_key' name='social_mentions_options[social_mentions_googleplus_key]' size='40' type='text' value='{$tr_options['social_mentions_googleplus_key']}' />";
+	$sm_options = get_option( 'social_mentions_options' );
+	echo "<input id='social_mentions_googleplus_key' name='social_mentions_options[social_mentions_googleplus_key]' size='40' type='text' value='{$sm_options['social_mentions_googleplus_key']}' />";
 }// end social_mentions_googleplus_key
 
 function social_mentions_googleplus_enabled() {
-	$tr_options = get_option( 'social_mentions_options' );
-	if ( empty( $tr_options['social_mentions_googleplus_enabled'] ) ) {
+	$sm_options = get_option( 'social_mentions_options' );
+	if ( empty( $sm_options['social_mentions_googleplus_enabled'] ) ) {
 		$no_selected = 'selected="selected"';
 		$yes_selected = '';
-	} elseif ( 'no' == $tr_options['social_mentions_googleplus_enabled'] ) {
+	} elseif ( 'no' == $sm_options['social_mentions_googleplus_enabled'] ) {
 		$no_selected = 'selected="selected"';
 		$yes_selected = '';
 	} else {
