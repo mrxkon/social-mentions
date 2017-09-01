@@ -13,6 +13,12 @@ function social_mentions_get_twitter_posts( $the_term ) {
 		$twitter_key = $sm_options['social_mentions_twitter_key'];
 		$twitter_secret = $sm_options['social_mentions_twitter_secret'];
 
+		if ( ! empty( $sm_options['social_mentions_twitter_rt_enabled'] ) && 'no' == $sm_options['social_mentions_twitter_rt_enabled'] ) {
+			$retweet = ' -RT';
+		} else {
+			$retweet = '';
+		}
+
 		$latest_tweet = new WP_Query(
 			array(
 				'post_type' => 'socment-twitter',
@@ -30,7 +36,7 @@ function social_mentions_get_twitter_posts( $the_term ) {
 			$since_id = '';
 		}
 
-		$url = SOCIAL_MENTIONS_TWITTER_API . '1.1/search/tweets.json?q=' . $the_term . '&count=20&since_id=' . $since_id;
+		$url = SOCIAL_MENTIONS_TWITTER_API . '1.1/search/tweets.json?q=' . $the_term . $retweet . '&count=40&since_id=' . $since_id;
 
 		function twitter_call_the_api( $the_term, $url, $twitter_access_token ) {
 			$response = wp_remote_get(

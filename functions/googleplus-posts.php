@@ -10,7 +10,7 @@ function social_mentions_get_googleplus_posts( $the_term ) {
 			return;
 		}
 
-		$url = SOCIAL_MENTIONS_GOOGLEPLUS_API . 'v1/activities?maxResults=20&query=%23' . $the_term . '&key=' . $sm_options['social_mentions_googleplus_key'];
+		$url = SOCIAL_MENTIONS_GOOGLEPLUS_API . 'v1/activities?maxResults=40&query=%23' . $the_term . '&key=' . $sm_options['social_mentions_googleplus_key'];
 
 		$response = wp_remote_get( $url );
 		$the_result = wp_remote_retrieve_body( $response );

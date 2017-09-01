@@ -27,7 +27,7 @@ function social_mentions_get_flickr_posts( $the_term ) {
 			$min_date = date( 'Y-m-d 0:00:00', strtotime( $today . '-30 days' ) );
 		}
 
-		$url = SOCIAL_MENTIONS_FLICKR_API . '?method=flickr.photos.search&tags=' . $the_term . '&per_page=20&min_upload_date=' . $min_date . '&extras=date_upload,description,owner_name,url_n,url_l,icon_farm,icon_server&format=json&nojsoncallback=1&api_key=' . $sm_options['social_mentions_flickr_key'];
+		$url = SOCIAL_MENTIONS_FLICKR_API . '?method=flickr.photos.search&tags=' . $the_term . '&per_page=40&min_upload_date=' . $min_date . '&extras=date_upload,description,owner_name,url_n,url_l,icon_farm,icon_server&format=json&nojsoncallback=1&api_key=' . $sm_options['social_mentions_flickr_key'];
 
 		$response = wp_remote_get( $url );
 		$the_result = wp_remote_retrieve_body( $response );

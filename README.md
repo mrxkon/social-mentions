@@ -7,7 +7,7 @@ Requires at least: 4.7
 
 Tested up to: 4.8.1
 
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 License: GPLv2 or later
 
@@ -53,6 +53,10 @@ FontAwesome - Copyright [Dave Gandy](http://fontawesome.io) -  SIL OFL 1.1 / MIT
 * Activate the plugin through the ‘Plugins’ menu in WordPress
 
 #### Changelog
+
+**1.0.3**
+
+* Added option to exclude ReTweets
 
 **1.0.2**
 

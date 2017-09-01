@@ -74,6 +74,13 @@ function social_mentions_options() {
 		'social_mentions_twitter',
 		'social_mentions_twitter'
 	);
+	add_settings_field(
+		'social_mentions_twitter_rt_enabled',
+		'Get ReTweets',
+		'social_mentions_twitter_rt_enabled',
+		'social_mentions_twitter',
+		'social_mentions_twitter'
+	);
 
 	// instagram settings
 	add_settings_section(
@@ -252,6 +259,24 @@ function social_mentions_twitter_enabled() {
 		$no_selected = '';
 	}
 	echo '<select id="social_mentions_twitter_enabled" name="social_mentions_options[social_mentions_twitter_enabled]">';
+	echo '<option value="no" ' . $no_selected . '>No</option>';
+	echo '<option value="yes" ' . $yes_selected . '>Yes</option>';
+	echo '</select>';
+}// end social_mentions_twitter_enabled
+
+function social_mentions_twitter_rt_enabled() {
+	$sm_options = get_option( 'social_mentions_options' );
+	if ( empty( $sm_options['social_mentions_twitter_rt_enabled'] ) ) {
+		$no_selected = 'selected="selected"';
+		$yes_selected = '';
+	} elseif ( 'no' == $sm_options['social_mentions_twitter_rt_enabled'] ) {
+		$no_selected = 'selected="selected"';
+		$yes_selected = '';
+	} else {
+		$yes_selected = 'selected="selected"';
+		$no_selected = '';
+	}
+	echo '<select id="social_mentions_twitter_rt_enabled" name="social_mentions_options[social_mentions_twitter_rt_enabled]">';
 	echo '<option value="no" ' . $no_selected . '>No</option>';
 	echo '<option value="yes" ' . $yes_selected . '>Yes</option>';
 	echo '</select>';
